@@ -1,8 +1,8 @@
-#include "RectangleComponent.h"
+#include "FillScreenDemo.h"
 
-RectangleComponent::RectangleComponent() : RectangleComponent(0, 0, 0, 0) {}
+FillScreenDemo::FillScreenDemo() : FillScreenDemo(0, 0, 0, 0) {}
 
-RectangleComponent::RectangleComponent(int x, int y, int w, int h) {
+FillScreenDemo::FillScreenDemo(int x, int y, int w, int h) {
   _renderRect = Rectangle(x, y, w, h);
   _beginRect = _renderRect;
   _endRect = Rectangle(0, 0, 240, 135);
@@ -10,12 +10,12 @@ RectangleComponent::RectangleComponent(int x, int y, int w, int h) {
   animationBeginMillis = millis();
 }
 
-void RectangleComponent::render(TFT_eSprite &eSprite) {
+void FillScreenDemo::render(TFT_eSprite &eSprite) {
   eSprite.fillRect(_renderRect.x, _renderRect.y, _renderRect.width,
                    _renderRect.height, TFT_RED);
 }
 
-void RectangleComponent::update() {
+void FillScreenDemo::update() {
   if (!animationDone) {
     animate();
   } else {
@@ -37,7 +37,7 @@ void RectangleComponent::update() {
   }
 }
 
-void RectangleComponent::animate() {
+void FillScreenDemo::animate() {
   // 判断动画是否结束
   if (millis() - animationBeginMillis > duration) {
     // 若已经超出动画的时间，则认为动画结束

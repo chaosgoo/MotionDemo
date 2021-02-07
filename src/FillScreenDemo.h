@@ -4,7 +4,7 @@
 #include "Rectangle.h"
 #include "TFT_eSPI.h"
 #include "interploter.h"
-class RectangleComponent {
+class FillScreenDemo {
  private:
   // 实际上被渲染的矩形
   Rectangle _renderRect;
@@ -22,8 +22,8 @@ class RectangleComponent {
   bool reverse = false;
 
  public:
-  RectangleComponent();
-  RectangleComponent(int x, int y, int w, int h);
+  FillScreenDemo();
+  FillScreenDemo(int x, int y, int w, int h);
 
   void render(TFT_eSprite &eSprite);
   void update();

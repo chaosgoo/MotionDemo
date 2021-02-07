@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <Wire.h>
 
-#include "RectangleComponent.h"
+#include "FillScreenDemo.h"
 #include "TFT_eSPI.h"
 
 // 显示sprite的内容
@@ -9,7 +9,7 @@ TFT_eSPI tft;
 // 实际绘制位于sprite
 TFT_eSprite sprite = TFT_eSprite(&tft);
 // 演示动画的矩形
-RectangleComponent rectCom = RectangleComponent(0, 56, 20, 20);
+FillScreenDemo rectCom = FillScreenDemo(0, 56, 20, 20);
 
 void pushToTFT() {
   // 推送到屏幕
