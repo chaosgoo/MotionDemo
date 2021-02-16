@@ -2,6 +2,7 @@
 #include <Wire.h>
 
 #include "FillScreenDemo.h"
+#include "ScrollNumberComponent.h"
 #include "TFT_eSPI.h"
 
 // 显示sprite的内容
@@ -10,6 +11,22 @@ TFT_eSPI tft;
 TFT_eSprite sprite = TFT_eSprite(&tft);
 // 演示动画的矩形
 FillScreenDemo rectCom = FillScreenDemo(0, 56, 20, 20);
+ScrollNumberComponent scrollCom = ScrollNumberComponent('0', 50, 40);
+
+// 转场
+void transcation() {
+  rectCom.update();
+  rectCom.render(sprite);
+}
+
+// 数字滚动
+void scrollNumber() {
+  // 获取运行的秒数并转换成字符
+  char second = '0' + (millis() / 1000) % 10;
+  scrollCom.setCh(second);
+  scrollCom.update();
+  scrollCom.render(sprite);
+}
 
 void pushToTFT() {
   // 推送到屏幕
@@ -17,7 +34,9 @@ void pushToTFT() {
   // 推送完以后清空当前画面内容
   sprite.fillSprite(TFT_BLACK);
 }
+
 void setup() {
+  Serial.begin(115200);
   // 初始化屏幕
   tft.init();
   // 旋转屏幕方向，从竖变为横向
@@ -29,8 +48,6 @@ void setup() {
 }
 
 void loop() {
-  rectCom.update();
-  rectCom.render(sprite);
-
+  scrollNumber();
   pushToTFT();
 }
