@@ -7,7 +7,7 @@
 
 #include <math.h>
 
-#include "Rectangle.h"
+#include "shape/Rectangle.h"
 
 #ifndef PI
 #define PI 3.14159265

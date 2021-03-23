@@ -1,9 +1,9 @@
 #ifndef RECTANGLECOMPONENT_H_
 #define RECTANGLECOMPONENT_H_
 
-#include "Rectangle.h"
+#include "shape/Rectangle.h"
 #include "TFT_eSPI.h"
-#include "interploter.h"
+#include "utils/interploter.h"
 class FillScreenDemo {
  private:
   // 实际上被渲染的矩形

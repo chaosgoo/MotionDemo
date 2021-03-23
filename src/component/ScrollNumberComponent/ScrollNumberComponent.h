@@ -1,17 +1,16 @@
 #if !defined(SCROLLNUMBERCOMPONENT_H_)
 #define SCROLLNUMBERCOMPONENT_H_
-#include "Rectangle.h"
 #include "TFT_eSPI.h"
-#include "interploter.h"
-
+#include "component/Component.h"
+#include "shape/Rectangle.h"
+#include "utils/interploter.h"
 // 35为Furore28pt7b字体的固定宽度
 #define TEXT_WIDTH 35
 // 38为Furore28pt7b字体的固定高度
 #define TEXT_HEIGHT 38
 
-class ScrollNumberComponent {
+class ScrollNumberComponent : public Component {
  private:
-  Rectangle rect;
   // 当前显示字符
   char _ch = 'A';
   // 新字符
@@ -41,8 +40,8 @@ class ScrollNumberComponent {
   ScrollNumberComponent();
   ScrollNumberComponent(int x, int y, char ch);
 
-  void render(TFT_eSprite &eSprite);
-  void update();
+  void render(TFT_eSprite *eSprite) override;
+  void update() override;
   void animate();
 
   void setCh(char ch);

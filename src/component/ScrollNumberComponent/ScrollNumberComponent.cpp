@@ -6,21 +6,21 @@ ScrollNumberComponent::ScrollNumberComponent(int x, int y, char ch) {
   this->rect = Rectangle(x, y, TEXT_WIDTH, TEXT_HEIGHT);
 }
 
-void ScrollNumberComponent::render(TFT_eSprite &eSprite) {
-  eSprite.setFreeFont(&Furore28pt7b);
+void ScrollNumberComponent::render(TFT_eSprite *eSprite) {
+  eSprite->setFreeFont(&Furore28pt7b);
   // 替换动画进行中，新旧字符同时绘制
   if (!charUpdateDone) {
-    eSprite.drawChar(_ch, rect.x,
+    eSprite->drawChar(_ch, rect.x,
                      rect.y + charUpdateRenderRect.height + TEXT_HEIGHT);
-    eSprite.drawChar(_newCh, rect.x, rect.y + charUpdateRenderRect.height);
-    eSprite.fillRect(rect.x + xOffset[_newCh - '0'], rect.y - rect.height,
+    eSprite->drawChar(_newCh, rect.x, rect.y + charUpdateRenderRect.height);
+    eSprite->fillRect(rect.x + xOffset[_newCh - '0'], rect.y - rect.height,
                      rect.width, rect.height + 2, TFT_BLACK);
-    eSprite.fillRect(rect.x + xOffset[_ch - '0'], rect.y + rect.height + 2,
+    eSprite->fillRect(rect.x + xOffset[_ch - '0'], rect.y + rect.height + 2,
                      rect.width, rect.height + 2, TFT_BLACK);
   } else {
     // 替换动画结束，只绘制新字符
-    eSprite.drawChar(_ch, rect.x, rect.y + charUpdateRenderRect.height);
-    eSprite.fillRect(rect.x + xOffset[_ch - '0'], rect.y - rect.height,
+    eSprite->drawChar(_ch, rect.x, rect.y + charUpdateRenderRect.height);
+    eSprite->fillRect(rect.x + xOffset[_ch - '0'], rect.y - rect.height,
                      rect.width, rect.height + 2, TFT_BLACK);
   }
 }
