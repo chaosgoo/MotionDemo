@@ -75,8 +75,8 @@ void setup() {
 }
 
 void loop() {
-  // transcation();
+  transcation();
   // scrollNumber();
-  playFireworks();
+  // playFireworks();
   pushToTFT();
 }
